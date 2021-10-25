@@ -1,5 +1,7 @@
 package com.example.quizapp.ui.fragments
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.shared.MyViewModel
 import android.widget.RadioButton
-import com.example.quizapp.shared.Question
+import androidx.activity.OnBackPressedCallback
+import android.content.DialogInterface
+
 
 
 class CurrentQuizRadiobutton : Fragment() {
@@ -28,6 +32,29 @@ class CurrentQuizRadiobutton : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_current_quiz, container, false)
 
+
+
+        //back button
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val dialogClickListener =
+                    DialogInterface.OnClickListener { dialog, which ->
+                        when (which) {
+                            DialogInterface.BUTTON_POSITIVE -> {
+                                findNavController().navigate(R.id.action_currentQuiz_to_startQuiz)
+                            }
+                            DialogInterface.BUTTON_NEGATIVE -> {
+
+                            }
+                        }
+                    }
+
+                val builder = AlertDialog.Builder(context)
+                builder.setMessage("Are you sure you want to quit?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show()
+
+            }
+        })
 
         var question = sharedView.getQuestion()
 

@@ -48,7 +48,12 @@ class StartQuiz : Fragment() {
             }
             else{
                 sharedView.startQuiz()
-                findNavController().navigate(R.id.action_startQuiz_to_currentQuiz)
+                if(sharedView.typeOfNewxtQuestion() == 1) {
+                    findNavController().navigate(R.id.action_startQuiz_to_currentQuiz)
+                }
+                else{
+                    findNavController().navigate(R.id.action_startQuiz_to_currentQuizCheckbox)
+                }
             }
         }
 

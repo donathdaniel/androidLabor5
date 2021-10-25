@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.shared.MyViewModel
+import kotlin.math.roundToInt
 
 class ResultQuiz : Fragment() {
 
@@ -29,7 +30,13 @@ class ResultQuiz : Fragment() {
             findNavController().navigate(R.id.action_resultQuiz_to_startQuiz)
         }
 
-        view.findViewById<TextView>(R.id.resultTextView).setText("${sharedView.companion.points} / ${sharedView.companion.finalPoints}")
+        if(sharedView.companion.points*10%10 == 0F) {
+            val points : Int = sharedView.companion.points.roundToInt()
+            view.findViewById<TextView>(R.id.resultTextView).setText("$points / ${sharedView.companion.finalPoints}")
+        }
+        else{
+            view.findViewById<TextView>(R.id.resultTextView).setText("${sharedView.companion.points} / ${sharedView.companion.finalPoints}")
+        }
 
         return view
     }
