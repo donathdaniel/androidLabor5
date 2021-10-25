@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/startQuiz">
+
+    <fragment
+        android:id="@+id/startQuiz"
+        android:name="com.example.quizapp.ui.fragments.StartQuiz"
+        android:label="StartQuiz" >
+        <action
+            android:id="@+id/action_startQuiz_to_currentQuiz"
+            app:destination="@id/currentQuiz" />
+        <action
+            android:id="@+id/action_startQuiz_to_currentQuizCheckbox"
+            app:destination="@id/currentQuizCheckbox" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultQuiz"
+        android:name="com.example.quizapp.ui.fragments.ResultQuiz"
+        android:label="ResultQuiz" >
+        <action
+            android:id="@+id/action_resultQuiz_to_startQuiz"
+            app:destination="@id/startQuiz" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentQuiz"
+        android:name="com.example.quizapp.ui.fragments.CurrentQuizRadiobutton"
+        android:label="CurrentQuiz" >
+        <action
+            android:id="@+id/action_currentQuiz_to_resultQuiz"
+            app:destination="@id/resultQuiz" />
+        <action
+            android:id="@+id/action_currentQuiz_self"
+            app:destination="@id/currentQuiz" />
+        <action
+            android:id="@+id/action_currentQuiz_to_currentQuizCheckbox"
+            app:destination="@id/currentQuizCheckbox" />
+    </fragment>
+    <fragment
+        android:id="@+id/currentQuizCheckbox"
+        android:name="com.example.quizapp.ui.fragments.CurrentQuizCheckbox"
+        android:label="CurrentQuizCheckbox" >
+        <action
+            android:id="@+id/action_currentQuizCheckbox_self"
+            app:destination="@id/currentQuizCheckbox" />
+        <action
+            android:id="@+id/action_currentQuizCheckbox_to_resultQuiz"
+            app:destination="@id/resultQuiz" />
+        <action
+            android:id="@+id/action_currentQuizCheckbox_to_currentQuiz"
+            app:destination="@id/currentQuiz" />
+    </fragment>
+</navigation>

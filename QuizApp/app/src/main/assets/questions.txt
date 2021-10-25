@@ -1,0 +1,15 @@
+Which is the highest mountain?
+Mount Everest
+K2
+Mount Kilimanjaro
+Etna
+Which is the biggest ocean?
+Pacific
+Atlantic
+Indian
+Arctic
+question?
+answer1
+answer2
+answer3
+answer4
